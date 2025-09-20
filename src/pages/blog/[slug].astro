@@ -1,0 +1,28 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import { getEntry, getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map(post => ({
+    params: { slug: post.slug }
+  }));
+}
+
+const { slug } = Astro.params;
+const entry = await getEntry('blog', slug);
+
+if (!entry) {
+  throw new Error(`Blog post not found: ${slug}`);
+}
+
+const { data: meta, render } = entry;
+const { Content } = await render();
+---
+<MainLayout>
+  <article class="py-12 prose max-w-3xl">
+    <h1 class="text-3xl font-bold mb-4">{meta.title || slug}</h1>
+    <p class="text-sm text-gray-500 mb-6">{meta.description}</p>
+    <Content />
+  </article>
+</MainLayout>

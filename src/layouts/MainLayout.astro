@@ -1,0 +1,60 @@
+---
+import "../styles/global.css";
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+const { title, description } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<slot name="head" />
+	</head>
+	<body class="min-h-screen">
+		<Navbar />
+		<main class="container">
+		<slot />
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll("pre code").forEach((blockEl) => {
+      const block = blockEl as HTMLElement; // ✅ cast so innerText works
+      const pre = block.parentElement as HTMLElement | null;
+      if (!pre) return;
+
+      // Create wrapper around <pre>
+      const wrapper = document.createElement("div");
+      wrapper.style.position = "relative";
+      wrapper.className = "group"; // Tailwind group for hover effects
+      pre.parentNode?.insertBefore(wrapper, pre);
+      wrapper.appendChild(pre);
+
+      // Create copy button
+      const button = document.createElement("button");
+      button.textContent = "Copy";
+      button.className =
+        "absolute top-2 right-2 bg-gray-700 text-white text-xs px-2 py-1 rounded opacity-70 group-hover:opacity-100 transition hover:bg-blue-600";
+      wrapper.appendChild(button);
+
+      // Copy functionality
+      button.addEventListener("click", async () => {
+        try {
+          await navigator.clipboard.writeText(block.innerText); // ✅ safe now
+          button.textContent = "Copied!";
+          setTimeout(() => (button.textContent = "Copy"), 2000);
+        } catch (err) {
+          console.error("Failed to copy: ", err);
+          button.textContent = "Error";
+          setTimeout(() => (button.textContent = "Copy"), 2000);
+        }
+      });
+    });
+  });
+</script>
+
+

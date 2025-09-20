@@ -1,0 +1,16 @@
+---
+const { title = '', description = '', image, url } = Astro.props;
+const site = import.meta.env.SITE || 'https://isaactalb.github.io';
+const metaTitle = title ? `${title} | Isaac Talb` : 'Isaac Talb — Full-Stack Developer';
+const metaDesc = description || 'Portfolio of Isaac Talb — Full-Stack Developer, DevOps enthusiast, community builder.';
+---
+<head>
+    <title>{metaTitle}</title>
+    <meta name="description" content={metaDesc} />
+    <meta property="og:title" content={metaTitle} />
+    <meta property="og:description" content={metaDesc} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={url || site} />
+    <meta property="og:image" content={image || `${site}/og-image.png`} />
+    <meta name="twitter:card" content="summary_large_image" />
+</head>

@@ -1,0 +1,37 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import { getEntry, getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map(project => ({
+    params: { slug: project.slug }
+  }));
+}
+
+const { slug } = Astro.params;
+const entry = await getEntry('projects', slug);
+
+if (!entry) {
+  throw new Error(`Project not found: ${slug}`);
+}
+
+const { data: meta, render } = entry;
+const { Content } = await render();
+---
+<MainLayout>
+  <article class="py-12 prose max-w-3xl">
+    <h1 class="text-3xl font-bold mb-4">{meta.title || slug}</h1>
+    <p class="text-sm text-gray-500 mb-6">{meta.description}</p>
+    <span class="text-sm text-gray-500">{meta.date}</span>
+    &nbsp; | &nbsp;
+    <a href="/about" class="hover:text-blue-600 hover:underline">
+      <span class="text-sm text-gray-500 font-semibold">{meta.author}</span>
+      <span class="hidden group-hover:block text-large text-gray-500 bg-white border rounded p-1">
+        IsaacTalb, Software Developer
+      </span>
+    </a>
+    &nbsp; <span>[ {meta.tags && meta.tags.map(tag => tag).join(', ')} ]</span>
+    <Content />
+  </article>
+</MainLayout>

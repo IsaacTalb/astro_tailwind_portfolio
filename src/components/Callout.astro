@@ -1,0 +1,21 @@
+---
+type Props = {
+  type?: "info" | "warning" | "error";
+  title?: string;
+  children: any;
+};
+
+const { type = "info", title, children } = Astro.props as Props;
+
+const colors = {
+  info: "bg-blue-50 border-blue-400 text-blue-900",
+  warning: "bg-yellow-50 border-yellow-400 text-yellow-900",
+  error: "bg-red-50 border-red-400 text-red-900",
+};
+const colorClass = colors[type] || colors.info;
+---
+
+<div class={`border-l-4 p-4 mb-4 rounded ${colorClass}`}>
+  {title && <h3 class="font-semibold mb-2">{title}</h3>}
+  <div>{children}</div>
+</div>

@@ -1,0 +1,25 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import SEO from '../components/SEO.astro';
+---
+<MainLayout>
+  <SEO title="Services — Isaac Talb" description="Development, VPS & DevOps, consulting." />
+
+  <section class="py-12">
+    <h1 class="text-2xl font-bold">Services</h1>
+    <ul class="mt-6 space-y-4">
+      <li>
+        <h3 class="font-semibold">Web Development</h3>
+        <p class="text-sm text-gray-600">Full-stack web apps with Laravel, React, Vue, Tailwind.</p>
+      </li>
+      <li>
+        <h3 class="font-semibold">VPS & DevOps</h3>
+        <p class="text-sm text-gray-600">Server setup, Docker, CI/CD, backups, SSL, aaPanel.</p>
+      </li>
+      <li>
+        <h3 class="font-semibold">Consulting & Training</h3>
+        <p class="text-sm text-gray-600">Workshops, mentoring, and technical guidance for small teams.</p>
+      </li>
+    </ul>
+  </section>
+</MainLayout>
