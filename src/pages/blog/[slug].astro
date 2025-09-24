@@ -20,6 +20,7 @@ const { data: meta, render } = entry;
 const { Content } = await render();
 ---
 <MainLayout>
+  
   <article class="py-12 prose max-w-3xl">
     <h1 class="text-3xl font-bold mb-4">{meta.title || slug}</h1>
     <p class="text-sm text-gray-500 mb-6">{meta.description}</p>

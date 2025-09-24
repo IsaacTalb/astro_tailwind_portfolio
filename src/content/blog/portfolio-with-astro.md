@@ -5,7 +5,7 @@ description: "Introduction to building a personal portfolio website using Astro,
 date: "2025-09-19"
 
 # Link is for your project live demo or repository
-link: "https://isaactalb.github.io/blog/2025-09-19-first-post"
+link: "https://isaac.duckcloud.info"
 
 author: "Isaac Talb"
 tags: ["astro", "tailwind", "portfolio", "markdown", "education"]
@@ -16,8 +16,6 @@ SEOImage: "../../assets/blog/Astro+Tailwind.png"
 ---
 
 &nbsp;
-
-<h1 class="text-3xl font-bold mb-8">My First Portfolio Blog</h1>
 
 <p class="text-lg leading-relaxed mb-12">Hello everyone, I’m <strong class="text-blue-600">Isaac Talb</strong>. This is my very first blog post on my portfolio website, and I’d like to introduce how I built this project — so that <strong class="text-blue-600">newer developers</strong> can learn, copy, and apply it for their <strong class="text-blue-600">educational purposes</strong>.</p>
 <hr>
@@ -73,7 +71,7 @@ You are welcome to **copy this project structure** and modify it for your own le
 
 ## <span class="text-2xl font-semibold">Live Demo</span>
 
-Check out the live project here: <a class="text-blue-500 underline" href="https://dsfadf.com"> Portfolio Website Demo </a>
+Check out the live project here: <a class="text-blue-500 underline" href="https://isaac.duckcloud.info"> Portfolio Website Demo </a>
 
 &nbsp;
 

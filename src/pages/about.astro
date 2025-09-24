@@ -2,26 +2,70 @@
 import MainLayout from '../layouts/MainLayout.astro';
 import SEO from '../components/SEO.astro';
 ---
+
 <MainLayout>
-<SEO title="About — Isaac Talb" description="About Isaac Talb — education, experience, and skills." />
+  <SEO title="About — Isaac Talb" description="About Isaac Talb — education, experience, and skills." />
 
+  <section class="py-12 px-6 md:px-12 lg:px-24">
+    <h1 class="text-4xl font-extrabold text-gray-800">About Me</h1>
+    <p class="mt-4 text-lg text-gray-600 leading-relaxed">
+      I'm <span class="font-bold text-gray-800">Thaung Ahlay Baw (Isaac)</span>, a <span class="font-semibold">Full-Stack Developer</span> 
+      with <span class="font-semibold">4+ years of experience</span> in building web applications, managing servers, and leading digital projects.
+    </p>
 
-<section class="py-12">
-<h1 class="text-3xl font-bold">About</h1>
-<div class="mt-4 prose max-w-prose">
-<p>I'm Thaung Ahlay Baw (Isaac), a Full-Stack Developer with 4+ years of experience building web applications using Laravel, Vue/React, and modern tooling. I maintain VPS servers, deploy with Docker and CI/CD, and enjoy community-driven projects.</p>
+    <!-- Experience -->
+    <div class="mt-10">
+      <h2 class="text-2xl font-bold text-gray-800 border-b pb-2">💼 Experience</h2>
+      <ul class="list-disc list-inside mt-4 space-y-2 text-gray-700">
+        <li><span class="font-semibold">General Manager</span> | Community Work Without Border — <span class="italic">Dec 2023 – Jun 2024</span></li>
+        <li><span class="font-semibold">M&E Data Manager</span> | Lisu Civil Society Organization — <span class="italic">Oct 2020 – Oct 2023</span></li>
+        <li><span class="font-semibold">Co-Founder & Developer</span> | Youth Zone Community Development Center — <span class="italic">Aug 2021 – Nov 2022</span></li>
+        <li><span class="font-semibold">Representative Film Curator</span> | Yangon Film School — <span class="italic">Feb 2022 – Jan 2023</span></li>
+      </ul>
+    </div>
 
-<h3 class="mt-8">Experience</h3>
-<ul class="list-disc list-inside pl-4">
-<li>General Manager | Community Work Without Border — Dec 2023 – Jun 2024</li>
-<li>M&E Data Manager | Lisu Civil Society Organization — Oct 2020 – Oct 2023</li>
-</ul>
+    <!-- Skills -->
+    <div class="mt-10">
+      <h2 class="text-2xl font-bold text-gray-800 border-b pb-2">⚡ Skills</h2>
+      <ul class="list-disc list-inside mt-4 space-y-2 text-gray-700">
+        <li>Languages: PHP, JavaScript, SQL, Python</li>
+        <li>Frameworks: Laravel, React, Vue.js, Next.js, Tailwind CSS, Livewire</li>
+        <li>Databases: MySQL, Supabase, Firebase</li>
+        <li>Tools: Git, GitHub, Docker, Postman, aaPanel, Cloudflare</li>
+        <li>DevOps: VPS Management, CI/CD, SSL, SSH, Laravel Forge</li>
+        <li>Other: RESTful APIs, OAuth, Agile/Scrum, PHPUnit</li>
+      </ul>
+    </div>
 
+    <!-- Education -->
+    <div class="mt-10">
+      <h2 class="text-2xl font-bold text-gray-800 border-b pb-2">🎓 Education</h2>
+      <ul class="list-disc list-inside mt-4 space-y-2 text-gray-700">
+        <li>Communication & Media — Chulalongkorn University (2024 – 2025)</li>
+        <li>Diploma in Liberal Arts & Social Sciences — Theik Khar Myanmar Institute (2019 – 2020)</li>
+        <li>Football & Sports Education — Institute of Sports & Physical Education (2015 – 2018)</li>
+      </ul>
+    </div>
 
-<h3 class="mt-8">Skills</h3>
-<ul class="list-disc list-inside pl-4">
-<li>Laravel, PHP, JavaScript, React, Vue, Tailwind CSS, MySQL, Docker, VPS management</li>
-</ul>
-</div>
-</section>
+    <!-- Achievements -->
+    <div class="mt-10">
+      <h2 class="text-2xl font-bold text-gray-800 border-b pb-2">🏆 Achievements</h2>
+      <ul class="list-disc list-inside mt-4 space-y-2 text-gray-700">
+        <li>Winner — Code for Hope Hackathon (Chiang Mai, Thailand)</li>
+        <li>Coordinated 30-day Youth Empowerment Program funded by PLAN International</li>
+        <li>Launched developer platforms: <a href="https://duckcloud.info" class="text-blue-500 underline hover:text-blue-700">DuckCloud</a>, <a href="https://isaac.duckcloud.info" class="text-blue-500 underline hover:text-blue-700">Personal Portfolio</a></li>
+        <li>Represented Lisu Youth at WHG Ramma Cultural Youth Network</li>
+      </ul>
+    </div>
+
+    <!-- Contact -->
+    <!-- <div class="mt-10">
+      <h2 class="text-2xl font-bold text-gray-800 border-b pb-2">📬 Contact</h2>
+      <ul class="list-disc list-inside mt-4 space-y-2 text-gray-700">
+        <li>Email: <a href="mailto:isaac@duckcloud.info" class="text-blue-500 underline hover:text-blue-700">isaac@duckcloud.info</a></li>
+        <li>Portfolio: <a href="https://isaac.duckcloud.info" class="text-blue-500 underline hover:text-blue-700">isaac.duckcloud.info</a></li>
+        <li>LinkedIn: <a href="https://www.linkedin.com/in/isaac-talb" class="text-blue-500 underline hover:text-blue-700">linkedin.com/in/isaac-talb</a></li>
+      </ul>
+    </div> -->
+  </section>
 </MainLayout>
