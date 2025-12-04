@@ -1,0 +1,44 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import SEO from '../components/SEO.astro';
+---
+<MainLayout>
+  <SEO title="Message Sent — Thank You" description="Your message has been delivered successfully." />
+
+  <section class="py-20 text-center max-w-2xl mx-auto px-6">
+    <!-- Success Icon -->
+    <div class="flex justify-center mb-6">
+      <svg 
+        class="w-20 h-20 text-green-500" 
+        fill="none" 
+        stroke="currentColor" 
+        stroke-width="1.5" 
+        viewBox="0 0 24 24"
+      >
+        <path 
+          stroke-linecap="round" 
+          stroke-linejoin="round" 
+          d="M9 12.75l2.25 2.25L15 9.75m6 .75a9 9 0 11-18 0 9 9 0 0118 0z" 
+        />
+      </svg>
+    </div>
+
+    <h1 class="text-3xl font-bold">Thank You!</h1>
+    <p class="mt-4 text-gray-700">
+      Your message has been successfully sent.
+    </p>
+
+    <p class="mt-2 text-gray-600">
+      I’ll respond to you as soon as possible.  
+      For faster communication, your message has also been forwarded directly to my Telegram inbox.
+    </p>
+
+    <!-- Back Button -->
+    <a 
+      href="/" 
+      class="inline-block mt-8 px-6 py-2 bg-black text-white rounded hover:bg-gray-800 transition"
+    >
+      Go Back Home
+    </a>
+  </section>
+</MainLayout>

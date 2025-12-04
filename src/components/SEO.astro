@@ -1,16 +1,55 @@
 ---
-const { title = '', description = '', image, url } = Astro.props;
+const {
+  title = '',
+  description = '',
+  image = '',
+  url = '',
+  SEOTitle = '',
+  SEODescription = '',
+  SEOImage = '',
+} = Astro.props;
+
 const site = import.meta.env.SITE || 'https://isaactalb.github.io';
-const metaTitle = title ? `${title} | Isaac Talb` : 'Isaac Talb — Full-Stack Developer';
-const metaDesc = description || 'Portfolio of Isaac Talb — Full-Stack Developer, DevOps enthusiast, community builder.';
+
+// choose title (prop -> frontmatter -> default)
+const inputTitle = title || SEOTitle || '';
+const metaTitle = inputTitle
+  ? (inputTitle.includes('Isaac Talb') ? inputTitle : `${inputTitle} | Isaac Talb`)
+  : 'Isaac Talb — Full-Stack Developer';
+
+// choose description
+const metaDesc = description || SEODescription || 'Portfolio of Isaac Talb — Full-Stack Developer, DevOps enthusiast, community builder.';
+
+// resolve image to an absolute URL that works in head
+const resolveImage = (src:any) => {
+  const fallback = `${site}/og-image.png`;
+  const s = src || SEOImage || '';
+  if (!s) return fallback;
+  if (s.startsWith('http://') || s.startsWith('https://') || s.startsWith('//')) return s;
+  if (s.startsWith('/')) return `${site}${s}`; // site-root absolute path -> full URL
+  try {
+    // try resolving relative to this component file (handles ../../assets/...)
+    return new URL(s, import.meta.url).href;
+  } catch {
+    return `${site}/${s}`;
+  }
+};
+
+const metaImage = resolveImage(image);
+const favicon = `${site}/assets/favicon.svg`;
 ---
 <head>
-    <title>{metaTitle}</title>
-    <meta name="description" content={metaDesc} />
-    <meta property="og:title" content={metaTitle} />
-    <meta property="og:description" content={metaDesc} />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content={url || site} />
-    <meta property="og:image" content={image || `${site}/og-image.png`} />
-    <meta name="twitter:card" content="summary_large_image" />
+  <title>{metaTitle}</title>
+  <meta name="description" content={metaDesc} />
+  <meta property="og:title" content={metaTitle} />
+  <meta property="og:description" content={metaDesc} />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={url || site} />
+  <meta property="og:image" content={metaImage} />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <!-- favicon served from /assets/favicon.svg (falls back to site root) -->
+  <link rel="icon" href={favicon} type="image/svg+xml" />
 </head>
