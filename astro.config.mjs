@@ -2,7 +2,7 @@ import { defineConfig } from "astro/config";
 import markdoc from "@astrojs/markdoc";
 import markdocConfig from "./markdoc.config.js";
 import tailwind from "@astrojs/tailwind";
-import vercel from "@astrojs/vercel/server";
+import vercel from "@astrojs/vercel";
 
 export default defineConfig({
   integrations: [
