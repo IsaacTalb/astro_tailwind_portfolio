@@ -1,35 +1,22 @@
 ---
 import "../styles/global.css";
+import Head from '../components/Head.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
-import SEO from '../components/SEO.astro';
+import { SITE } from '../config';
 
-const frontmatter = Astro.props.frontmatter || Astro.props;
-const {
-  title,
-  description,
-  SEOTitle,
-  SEODescription,
-  SEOImage,
-  url,
-} = frontmatter;
+const { metadata, image = '', url = '' } = Astro.props;
+const frontmatter = Astro.props.frontmatter || {};
+const title = metadata?.TITLE || frontmatter.SEOTitle || frontmatter.title || SITE.TITLE;
+const description = metadata?.DESCRIPTION || frontmatter.SEODescription || frontmatter.description || SITE.DESCRIPTION;
+const resolvedImage = image || frontmatter.SEOImage || '/assets/favicon.svg';
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <SEO
-      title={SEOTitle || title}
-      description={SEODescription || description}
-      image="/assets/favicon.svg"
-      url={url}
-    />
-    <slot name="head" />
-    <link rel="icon" type="image/svg+xml" href="/assets/astro.svg" />
+    <Head title={title} description={description} image={resolvedImage} />
   </head>
-
   <body class="bg-gray-50 text-gray-800">
     <Navbar />
     <main class="max-w-3xl mx-auto px-6 py-12">
@@ -39,32 +26,28 @@ const {
   </body>
 </html>
 
-
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll("pre code").forEach((blockEl) => {
-      const block = blockEl as HTMLElement; // ✅ cast so innerText works
+      const block = blockEl as HTMLElement;
       const pre = block.parentElement as HTMLElement | null;
       if (!pre) return;
 
-      // Create wrapper around <pre>
       const wrapper = document.createElement("div");
       wrapper.style.position = "relative";
-      wrapper.className = "group"; // Tailwind group for hover effects
+      wrapper.className = "group";
       pre.parentNode?.insertBefore(wrapper, pre);
       wrapper.appendChild(pre);
 
-      // Create copy button
       const button = document.createElement("button");
       button.textContent = "Copy";
       button.className =
         "absolute top-2 right-2 bg-gray-700 text-white text-xs px-2 py-1 rounded opacity-70 group-hover:opacity-100 transition hover:bg-blue-600";
       wrapper.appendChild(button);
 
-      // Copy functionality
       button.addEventListener("click", async () => {
         try {
-          await navigator.clipboard.writeText(block.innerText); // ✅ safe now
+          await navigator.clipboard.writeText(block.innerText);
           button.textContent = "Copied!";
           setTimeout(() => (button.textContent = "Copy"), 2000);
         } catch (err) {

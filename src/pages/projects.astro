@@ -2,11 +2,12 @@
 import MainLayout from '../layouts/MainLayout.astro';
 import SEO from '../components/SEO.astro';
 import { getCollection } from 'astro:content';
+import { PROJECTS } from '../config';
 
 const projects = await getCollection('projects');
 ---
 <MainLayout>
-    <SEO title="Projects — Isaac Talb" description="Selected projects and case studies by Isaac." />
+    <SEO metadata={PROJECTS} />
 
     <section class="py-12">
         <h1 class="text-2xl font-bold">Projects</h1>

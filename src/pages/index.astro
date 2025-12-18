@@ -2,9 +2,10 @@
 import "../styles/global.css";
 import MainLayout from '../layouts/MainLayout.astro';
 import SEO from '../components/SEO.astro';
+import { HOME } from '../config';
 ---
 <MainLayout>
-  <SEO title="Home" description="Full-Stack Developer, VPS & DevOps enthusiast, and community builder." image="/assets/favicon.svg" />
+  <SEO metadata={HOME} image="/assets/favicon.svg" />
 
   <section class="py-20 text-center">
     <h1 class="text-4xl font-bold">Hi, I’m Isaac 👋</h1>

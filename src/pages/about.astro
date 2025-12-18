@@ -1,10 +1,11 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
 import SEO from '../components/SEO.astro';
+import { ABOUT } from '../config';
 ---
 
 <MainLayout>
-  <SEO title="About — Isaac Talb" description="About Isaac Talb — education, experience, and skills." />
+  <SEO metadata={ABOUT} />
 
   <section class="py-12 px-6 md:px-12 lg:px-24">
     <h1 class="text-4xl font-extrabold text-gray-800">About Me</h1>
