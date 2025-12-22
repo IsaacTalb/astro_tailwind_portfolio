@@ -2,11 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
-
 html, body {
-    @apply bg-white text-gray-900 antialiased;
+    @apply bg-gradient-to-br from-[#0c0c0c8e] via-[#030303ea] to-[#201c1c] text-gray-100 antialiased;
 }
 
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
 
-/* simple container */
-.container { @apply max-w-4xl mx-auto px-6; }
+/* Simple container */
+.container { 
+    @apply max-w-4xl mx-auto px-6; 
+}
+
+/* Add a card style for sections */
+.card {
+    @apply bg-[#242424] rounded-lg shadow-lg p-6;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    @apply shadow-xl transform scale-105;
+}

@@ -3,15 +3,14 @@ title: "Exploring Southeast Asia: My Travel Journey Through Laos, Vietnam & Camb
 layout: ../../layouts/MainLayout.astro
 description: "A personal travel story sharing my journey across Laos, Vietnam, and Cambodia — from quiet riversides to bustling cities and cultural discoveries."
 date: "2025-10-25"
-
 # Link is for your travel photo gallery or travel vlog
 link: "https://isaac.duckcloud.info/travel"
-
 author: "Isaac Talb"
 tags: ["travel", "asia", "laos", "vietnam", "cambodia", "backpacking", "culture", "journey"]
 SEO: true
 SEOTitle: "Traveling Across Laos, Vietnam & Cambodia | My Southeast Asia Experience"
 SEODescription: "Join Isaac Talb as he shares his experiences traveling through Laos, Vietnam, and Cambodia — exploring local life, culture, food, and unforgettable moments in Southeast Asia."
+draft: false
 ---
 
 <p class="text-lg leading-relaxed mb-12">Hi everyone, I’m <strong class="text-blue-600">Isaac Talb</strong>. In this blog, I want to share my <strong class="text-blue-600">travel experiences</strong> across <strong class="text-blue-600">Laos, Vietnam, and Cambodia</strong> — three beautiful countries that taught me about simplicity, kindness, and connection.</p>

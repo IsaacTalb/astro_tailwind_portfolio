@@ -1,29 +1,27 @@
 ---
 import MainLayout from '../../layouts/MainLayout.astro';
-import { getEntry, getCollection } from 'astro:content';
-
-export async function getStaticPaths() {
-  const posts = await getCollection('blog');
-  return posts.map(post => ({
-    params: { slug: post.slug }
-  }));
-}
+import { getEntry } from 'astro:content';
+import { getMetadata } from '../../config';
 
 const { slug } = Astro.params;
-const entry = await getEntry('blog', slug);
 
-if (!entry) {
-  throw new Error(`Blog post not found: ${slug}`);
+if (!slug) {
+  throw new Error('Slug parameter is missing.');
 }
 
-const { data: meta, render } = entry;
-const { Content } = await render();
+const post = await getEntry('blog', slug); // Fetch the blog post by slug
+if (!post) {
+  throw new Error(`Blog post with slug "${slug}" not found.`);
+}
+
+const { Content } = await post.render(); // Render the Markdown content
+const metadata = getMetadata('blog', post.data); // Generate metadata using the frontmatter
 ---
-<MainLayout>
-  
+
+<MainLayout metadata={metadata} image={metadata.IMAGE}>
   <article class="py-12 prose max-w-3xl">
-    <h1 class="text-3xl font-bold mb-4">{meta.title || slug}</h1>
-    <p class="text-sm text-gray-500 mb-6">{meta.description}</p>
-    <Content />
+    <h1 class="text-3xl font-bold mb-4">{metadata.TITLE}</h1>
+    <p class="text-sm text-gray-500 mb-6">{metadata.DESCRIPTION}</p>
+    <Content /> <!-- Render the Markdown content -->
   </article>
 </MainLayout>

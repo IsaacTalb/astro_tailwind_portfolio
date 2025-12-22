@@ -12,6 +12,7 @@ SEO: true
 SEOTitle: "Host a Laravel Website Using an Android Phone"
 SEODescription: "Learn how to turn an Android phone into a live web server using Laravel, Termux, and Cloudflare Tunnel. An educational self-hosting project by Isaac Talb."
 SEOImage: "../../assets/projects/deploy-server-on-your-mobile-phone.png"
+draft: false
 ---
 
 &nbsp;

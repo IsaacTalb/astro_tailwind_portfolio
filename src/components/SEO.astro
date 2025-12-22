@@ -2,16 +2,13 @@
 import { SITE } from "../config";
 
 const {
-  metadata,
-  image = '',
+  title = SITE.TITLE,
+  description = SITE.DESCRIPTION,
+  image = SITE.Favicon,
   url = '',
 } = Astro.props;
 
-const site = import.meta.env.SITE || 'https://isaactalb.github.io';
-
-// Use metadata for title and description, fallback to SITE
-const metaTitle = metadata?.TITLE ? `${metadata.TITLE} | ${SITE.TITLE}` : SITE.TITLE;
-const metaDesc = metadata?.DESCRIPTION || SITE.DESCRIPTION;
+const site = import.meta.env.SITE || 'https://isaac.duckcloud.info';
 
 // resolve image to an absolute URL that works in head
 const resolveImage = (src: any) => {
@@ -29,18 +26,19 @@ const resolveImage = (src: any) => {
 };
 
 const metaImage = resolveImage(image);
-const favicon = `${site}/assets/favicon.svg`;
+const favicon = SITE.Favicon;
 ---
 <head>
-  <title>{metaTitle}</title>
-  <meta name="description" content={metaDesc} />
-  <meta property="og:title" content={metaTitle} />
-  <meta property="og:description" content={metaDesc} />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={metaImage} />
   <meta property="og:type" content="website" />
   <meta property="og:url" content={url || site} />
-  <meta property="og:image" content={metaImage} />
   <meta name="twitter:card" content="summary_large_image" />
-
-  <!-- favicon served from /assets/favicon.svg (falls back to site root) -->
-  <link rel="icon" href={favicon} type="image/svg+xml" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={metaImage} />
+  <link rel="icon" href={SITE.Favicon} type="image/svg+xml" />
 </head>

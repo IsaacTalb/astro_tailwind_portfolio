@@ -13,6 +13,7 @@ SEO: true
 SEOTitle: "Building a Portfolio with Astro + Tailwind"
 SEODescription: "Isaac Talb shares how he built his first personal portfolio website with Astro, Tailwind, and Markdown — a project you can learn from and apply."
 SEOImage: "../../assets/blog/Astro+Tailwind.png"
+draft: false
 ---
 
 &nbsp;

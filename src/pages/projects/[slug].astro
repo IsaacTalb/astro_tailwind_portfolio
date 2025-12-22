@@ -1,37 +1,34 @@
 ---
 import MainLayout from '../../layouts/MainLayout.astro';
-import { getEntry, getCollection } from 'astro:content';
-
-export async function getStaticPaths() {
-  const projects = await getCollection('projects');
-  return projects.map(project => ({
-    params: { slug: project.slug }
-  }));
-}
+import { getEntry } from 'astro:content';
+import { getMetadata } from '../../config';
 
 const { slug } = Astro.params;
-const entry = await getEntry('projects', slug);
-
-if (!entry) {
-  throw new Error(`Project not found: ${slug}`);
+if (!slug) {
+  throw new Error('Slug parameter is missing.');
+}
+const project = await getEntry('projects', slug); // Fetch the project by slug
+if (!project) {
+  throw new Error(`Project with slug "${slug}" not found.`);
 }
 
-const { data: meta, render } = entry;
-const { Content } = await render();
+const { Content } = await project.render(); // Render the Markdown content
+const metadata = getMetadata('projects', project.data);
 ---
-<MainLayout>
+
+<MainLayout metadata={metadata} image={metadata.IMAGE}>
   <article class="py-12 prose max-w-3xl">
-    <h1 class="text-3xl font-bold mb-4">{meta.title || slug}</h1>
-    <p class="text-sm text-gray-500 mb-6">{meta.description}</p>
-    <span class="text-sm text-gray-500">{meta.date}</span>
+    <h1 class="text-3xl font-bold mb-4">{metadata.TITLE || slug}</h1>
+    <p class="text-sm text-gray-500 mb-6">{metadata.DESCRIPTION}</p>
+    <span class="text-sm text-gray-500">{metadata.DATE}</span>
     &nbsp; | &nbsp;
     <a href="/about" class="hover:text-blue-600 hover:underline">
-      <span class="text-sm text-gray-500 font-semibold">{meta.author}</span>
+      <span class="text-sm text-gray-500 font-semibold">{metadata.AUTHOR}</span>
       <span class="hidden group-hover:block text-large text-gray-500 bg-white border rounded p-1">
         IsaacTalb, Software Developer
       </span>
     </a>
-    &nbsp; <span>[ {meta.tags && meta.tags.map(tag => tag).join(', ')} ]</span>
+    &nbsp; <span>[ {metadata.TAGS && metadata.TAGS.map(tag => tag).join(', ')} ]</span>
     <Content />
   </article>
 </MainLayout>

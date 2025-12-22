@@ -1,12 +1,16 @@
 ---
 import "../styles/global.css";
 import MainLayout from '../layouts/MainLayout.astro';
-import SEO from '../components/SEO.astro';
-import { HOME } from '../config';
----
-<MainLayout>
-  <SEO metadata={HOME} image="/assets/favicon.svg" />
+import { HOME, SITE } from '../config';
+import { getCollection } from 'astro:content';
 
+const projects = await getCollection('projects'); // Fetch all projects
+const blog = await getCollection('blog'); // Fetch all blog posts
+const selectedProjects = projects.slice(0, 3); // Get the first 3 projects
+const selectedBlogPosts = blog.slice(0, 3); // Get the first 3 blog posts
+---
+
+<MainLayout metadata={HOME} image={SITE.Favicon}>
   <section class="py-20 text-center">
     <h1 class="text-4xl font-bold">Hi, I’m Isaac 👋</h1>
     <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">Experienced Full-Stack Developer with 4+ years building web applications, VPS maintenance, and community projects. I build efficient systems with Laravel, React, and modern tooling.</p>
@@ -16,19 +20,43 @@ import { HOME } from '../config';
     </div>
   </section>
 
-  <section class="py-12">
-    <h2 class="text-2xl font-semibold">Selected Projects</h2>
+  <section>
+    <h2 class="text-2xl font-semibold">Recent Blog Posts</h2>
     <div class="mt-6 grid gap-6 md:grid-cols-2">
-      <!-- Example card -->
-      <article class="border p-6 rounded">
-        <h3 class="font-semibold">isaac.duckcloud.info</h3>
-        <p class="mt-2 text-sm text-gray-600">Personal site (Laravel + Livewire + Jetstream)</p>
-        <div class="mt-4">
-          <a class="text-sm" href="https://isaac.duckcloud.info">Live</a>
-          <span class="mx-2">·</span>
-          <a class="text-sm" href="https://github.com/IsaacTalb">Code</a>
-        </div>
-      </article>
+      {selectedBlogPosts.map((blog) => (
+        <article class="border p-6 rounded card">
+          <h3 class="font-semibold">{blog.data.title}</h3>
+          <p class="mt-2 text-sm text-gray-600">{blog.data.description}</p>
+          <div class="mt-4">
+            {blog.data.link && (
+              <>
+                <a class="text-sm" href={blog.data.link}>Read more</a>
+                <span class="mx-2">·</span>
+              </>
+            )}
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="py-12">
+    <h2 class="text-2xl font-semibold">Recent Projects</h2>
+    <div class="mt-6 grid gap-6 md:grid-cols-2">
+      {selectedProjects.map((project) => (
+        <article class="border p-6 rounded card">
+          <h3 class="font-semibold">{project.data.title}</h3>
+          <p class="mt-2 text-sm text-gray-600">{project.data.description}</p>
+          <div class="mt-4">
+            {project.data.link && (
+              <>
+                <a class="text-sm" href={project.data.link}>Live Demo</a>
+                <span class="mx-2">·</span>
+              </>
+            )}
+          </div>
+        </article>
+      ))}
     </div>
   </section>
 </MainLayout>

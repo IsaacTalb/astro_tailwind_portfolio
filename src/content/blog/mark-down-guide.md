@@ -3,18 +3,15 @@ title: "Markdown Guide for absolute beginner"
 layout: ../../layouts/MainLayout.astro
 description: "Absolute beginner friendly Markdown Usages for educational purposes."
 date: "2025-10-09"
-
-# Link is for your project live demo or repository
-link: "https://isaac.duckcloud.info"
-
+link: "https://isaac.duckcloud.info" #need to add comments
 author: "Isaac Talb"
 tags: ["astro", "guide", "tutorials", "markdown", "education"]
 SEO: true
 SEOTitle: "Markdown Guide for absolute beginner"
 SEODescription: "Comprehensive guide of useful Markdoc syntax and features for writing rich markdown content which include titles, headings, paragraphs, links, images, text formatting and colors."
 SEOImage: "../../assets/blog/Astro+Tailwind.png"
+draft: false
 ---
-
 &nbsp;
 
 <p class="text-lg leading-relaxed mb-12">Hi this is my second blog and today I will be sharing the comprehensive guide of useful Markdoc syntax and features for writing rich markdown content which include titles, headings, paragraphs, links, images, text formatting and colors.</p>

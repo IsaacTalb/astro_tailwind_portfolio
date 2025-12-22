@@ -14,6 +14,7 @@ const blog = defineCollection({
     SEOTitle: z.string().optional(),
     SEODescription: z.string().optional(),
     SEOImage: z.string().optional(),
+    draft: z.boolean().optional(),
     
   }),
   // Markdoc files will be supported automatically
@@ -33,6 +34,7 @@ const projects = defineCollection({
     SEOTitle: z.string().optional(),
     SEODescription: z.string().optional(),
     SEOImage: z.string().optional(),
+    draft: z.boolean().optional(),
   }),
 });
 
