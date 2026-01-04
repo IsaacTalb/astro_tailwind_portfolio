@@ -20,7 +20,7 @@ const metadata = getMetadata('blog', post.data); // Generate metadata using the 
 
 <MainLayout metadata={metadata} image={metadata.IMAGE}>
   <article class="py-12 prose max-w-3xl">
-    <h1 class="text-3xl font-bold mb-4">{metadata.TITLE}</h1>
+    <h1 class="text-3xl text-white font-bold mb-4">{metadata.TITLE}</h1>
     <p class="text-sm text-gray-500 mb-6">{metadata.DESCRIPTION}</p>
     <Content /> <!-- Render the Markdown content -->
   </article>

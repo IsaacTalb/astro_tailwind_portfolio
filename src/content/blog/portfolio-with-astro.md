@@ -5,7 +5,7 @@ description: "Introduction to building a personal portfolio website using Astro,
 date: "2025-09-19"
 
 # Link is for your project live demo or repository
-link: "https://isaac.duckcloud.info"
+link: "https://isaac.duckcloud.info/blog/portfolio-with-astro"
 
 author: "Isaac Talb"
 tags: ["astro", "tailwind", "portfolio", "markdown", "education"]

@@ -7,10 +7,10 @@ import { CONTACT } from '../config';
   <section class="py-12">
     <h1 class="text-2xl font-bold">Contact</h1>
 
-    <p class="mt-4 text-gray-600">
+    <p class="mt-4 text-gray-300">
       Email: <a href="mailto:isaac@duckcloud.info">isaac@duckcloud.info</a>
     </p>
-    <p class="mt-4 text-gray-700">
+    <p class="mt-4 text-gray-400">
       You can also reach me faster on Telegram — messages sent through this form will be forwarded directly to my Telegram inbox for quicker communication.
     </p>
 
@@ -19,20 +19,20 @@ import { CONTACT } from '../config';
     <form action="/api/send-message" method="POST" class="mt-4 max-w-xl">
       <label class="block">
         Name
-        <input name="name" required class="w-full border px-3 py-2 mt-2 rounded" />
+        <input name="name" required class="w-full bg-gray-800 border px-3 py-2 mt-2 rounded" placeholder="e.g. Isaac Talb" style="font-family: 'Roboto Mono', monospace; border-style: dotted;" />
       </label>
 
       <label class="block mt-3">
         Email
-        <input name="email" type="email" required class="w-full border px-3 py-2 mt-2 rounded" />
+        <input name="email" type="email" required class="w-full bg-gray-800 border px-3 py-2 mt-2 rounded" placeholder="e.g. isaac@duckcloud.info" style="font-family: 'Space Mono', monospace; border-style: solid;" />
       </label>
 
       <label class="block mt-3">
         Message
-        <textarea name="message" rows="5" required class="w-full border px-3 py-2 mt-2 rounded"></textarea>
+        <textarea name="message" rows="5" required class="w-full bg-gray-800 border px-3 py-2 mt-2 rounded" placeholder="e.g. Hi, I'd like to ask you about your project..." style="font-family: 'Roboto', sans-serif; border-style: double;"></textarea>
       </label>
 
-      <button type="submit" class="mt-4 inline-block px-6 py-2 bg-black text-white rounded hover:bg-gray-800 transition">
+      <button type="submit" class="mt-4 inline-block px-6 py-2 bg-white text-black rounded hover:bg-gray-400 transition">
         Send Message
       </button>
     </form>

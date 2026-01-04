@@ -10,6 +10,10 @@ const blog = await getCollection('blog');
 <MainLayout metadata={BLOG}>
     <section class="py-12">
         <h1 class="text-2xl font-bold">Blogs</h1>
+        <div>
+            <p class="mt-4 text-gray-400">Here are some of the blogs I've written:</p>
+            <!-- <span>You can also find them with tags on the <a href="/tags" class="text-blue-600 hover:underline">tags page</a>.</span> -->
+        </div>
         <div class="mt-6 grid gap-6 md:grid-cols-2">
             {blog.length === 0 ? (
                 <p class="text-gray-600">No blogs yet — add markdown files to <code>src/content/blog</code>.</p>
@@ -17,11 +21,11 @@ const blog = await getCollection('blog');
                 blog.map(p => (
                     <article class="border p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 ease-in-out">
                         <a href={`/blog/${p.slug}`} class="group block">
-                            <h3 class="font-semibold text-lg text-gray-900 group-hover:text-blue-600 underline decoration-blue-500 decoration-2 underline-offset-4 transition-colors duration-300">
+                            <h3 class="font-semibold text-lg text-white group-hover:text-blue-600 underline decoration-blue-500 decoration-2 underline-offset-4 transition-colors duration-300">
                                # {p.data.title}
                             </h3>
                         </a>
-                        <p class="mt-2 text-sm text-gray-600">{p.data.description}</p>
+                        <p class="mt-2 text-sm text-gray-400">{p.data.description}</p>
 
                         <div class="mt-4">
                             <a 

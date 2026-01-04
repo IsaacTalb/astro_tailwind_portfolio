@@ -4,7 +4,7 @@ layout: ../../layouts/MainLayout.astro
 description: "A personal travel story sharing my journey across Laos, Vietnam, and Cambodia — from quiet riversides to bustling cities and cultural discoveries."
 date: "2025-10-25"
 # Link is for your travel photo gallery or travel vlog
-link: "https://isaac.duckcloud.info/travel"
+link: "https://isaac.duckcloud.info/blog/travel-experiences"
 author: "Isaac Talb"
 tags: ["travel", "asia", "laos", "vietnam", "cambodia", "backpacking", "culture", "journey"]
 SEO: true

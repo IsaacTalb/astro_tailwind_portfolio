@@ -3,7 +3,7 @@ title: "Markdown Guide for absolute beginner"
 layout: ../../layouts/MainLayout.astro
 description: "Absolute beginner friendly Markdown Usages for educational purposes."
 date: "2025-10-09"
-link: "https://isaac.duckcloud.info" #need to add comments
+link: "https://isaac.duckcloud.info/blog/mark-down-guide" #need to add comments
 author: "Isaac Talb"
 tags: ["astro", "guide", "tutorials", "markdown", "education"]
 SEO: true

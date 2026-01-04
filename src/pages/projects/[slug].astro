@@ -18,7 +18,7 @@ const metadata = getMetadata('projects', project.data);
 
 <MainLayout metadata={metadata} image={metadata.IMAGE}>
   <article class="py-12 prose max-w-3xl">
-    <h1 class="text-3xl font-bold mb-4">{metadata.TITLE || slug}</h1>
+    <h1 class="text-3xl text-white font-bold mb-4">{metadata.TITLE || slug}</h1>
     <p class="text-sm text-gray-500 mb-6">{metadata.DESCRIPTION}</p>
     <span class="text-sm text-gray-500">{metadata.DATE}</span>
     &nbsp; | &nbsp;

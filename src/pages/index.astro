@@ -13,10 +13,10 @@ const selectedBlogPosts = blog.slice(0, 3); // Get the first 3 blog posts
 <MainLayout metadata={HOME} image={SITE.Favicon}>
   <section class="py-20 text-center">
     <h1 class="text-4xl font-bold">Hi, I’m Isaac 👋</h1>
-    <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">Experienced Full-Stack Developer with 4+ years building web applications, VPS maintenance, and community projects. I build efficient systems with Laravel, React, and modern tooling.</p>
+    <p class="mt-4 text-lg text-gray-300 max-w-2xl mx-auto">Experienced Full-Stack Developer with 4+ years building web applications, VPS maintenance, and community projects. I build efficient systems with Laravel, React, and modern tooling.</p>
     <div class="mt-8">
-      <a class="mr-4 inline-block px-5 py-3 border rounded-lg" href="/projects">View projects</a>
-      <a class="inline-block px-5 py-3 bg-black text-white rounded-lg" href="/contact">Contact me</a>
+      <a class="mr-4 inline-block px-5 py-3 border rounded-lg hover:bg-white hover:text-black" href="/projects">View projects</a>
+      <a class="inline-block px-5 py-3 bg-white text-black hover:bg-black hover:text-white hover:border-white hover:border hover:border-white rounded-lg" href="/contact">Contact me</a>
     </div>
   </section>
 
@@ -26,7 +26,7 @@ const selectedBlogPosts = blog.slice(0, 3); // Get the first 3 blog posts
       {selectedBlogPosts.map((blog) => (
         <article class="border p-6 rounded card">
           <h3 class="font-semibold">{blog.data.title}</h3>
-          <p class="mt-2 text-sm text-gray-600">{blog.data.description}</p>
+          <p class="mt-2 text-sm text-gray-400">{blog.data.description}</p>
           <div class="mt-4">
             {blog.data.link && (
               <>
@@ -46,7 +46,7 @@ const selectedBlogPosts = blog.slice(0, 3); // Get the first 3 blog posts
       {selectedProjects.map((project) => (
         <article class="border p-6 rounded card">
           <h3 class="font-semibold">{project.data.title}</h3>
-          <p class="mt-2 text-sm text-gray-600">{project.data.description}</p>
+          <p class="mt-2 text-sm text-gray-400">{project.data.description}</p>
           <div class="mt-4">
             {project.data.link && (
               <>
