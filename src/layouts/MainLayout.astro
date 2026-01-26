@@ -19,6 +19,7 @@ const resolvedImage = image || frontmatter.SEOImage || SITE.Favicon;
     <Head title={`${title} | ${SITE.TITLE}`} description={description} image={resolvedImage} />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="icon" type="image/x-icon" href={SITE.Favicon}>
+    <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
   </head>
   <body>
     <Navbar />
@@ -63,5 +64,7 @@ const resolvedImage = image || frontmatter.SEOImage || SITE.Favicon;
     });
   });
 </script>
+
+
 
 

@@ -16,7 +16,7 @@ const selectedBlogPosts = blog.slice(0, 3); // Get the first 3 blog posts
     <p class="mt-4 text-lg text-gray-300 max-w-2xl mx-auto">Experienced Full-Stack Developer with 4+ years building web applications, VPS maintenance, and community projects. I build efficient systems with Laravel, React, and modern tooling.</p>
     <div class="mt-8">
       <a class="mr-4 inline-block px-5 py-3 border rounded-lg hover:bg-white hover:text-black" href="/projects">View projects</a>
-      <a class="inline-block px-5 py-3 bg-white text-black hover:bg-black hover:text-white hover:border-white hover:border hover:border-white rounded-lg" href="/contact">Contact me</a>
+      <a class="inline-block px-5 py-3 bg-white text-black hover:bg-black hover:text-white hover:border hover:border-white rounded-lg" href="/contact">Contact me</a>
     </div>
   </section>
 
@@ -30,7 +30,7 @@ const selectedBlogPosts = blog.slice(0, 3); // Get the first 3 blog posts
           <div class="mt-4">
             {blog.data.link && (
               <>
-                <a class="text-sm" href={blog.data.link}>Read more</a>
+                <a class="text-sm underline hover:text-indigo-200" href={blog.data.link}>Read more</a>
                 <span class="mx-2">·</span>
               </>
             )}
@@ -57,6 +57,87 @@ const selectedBlogPosts = blog.slice(0, 3); // Get the first 3 blog posts
           </div>
         </article>
       ))}
+    </div>
+  </section>
+  <section>
+    <h2 class="text-2xl font-semibold">Technologies I Work With</h2>
+    <div class="mt-6 grid grid-cols-2 md:grid-cols-4 gap-6 bg-white-100 p-6 rounded-lg">
+      <div class="flex flex-col items-center border rounded-lg p-4 bg-slate-50 hover:shadow-lg transition transform duration-600 ease-in-out hover:scale-105">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-plain.svg" class="h-16 mb-2 p-2" />
+        <span class="text-sm text-black"><b>PHP</b></span>
+      </div>
+      <div class="flex flex-col items-center border rounded-lg p-4 bg-slate-50 hover:shadow-lg transition transform duration-600 ease-in-out hover:scale-105">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt="JavaScript" class="h-16 mb-2 p-2" />
+        <span class="text-sm text-black"><b>JavaScript</b></span>
+      </div>
+      <div class="flex flex-col items-center border rounded-lg p-4 bg-slate-50 hover:shadow-lg transition transform duration-600 ease-in-out hover:scale-105">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original.svg" alt="Laravel" class="h-16 mb-2 p-2" />
+        <span class="text-sm text-black"><b>Laravel</b></span>
+      </div>
+      <div class="flex flex-col items-center border rounded-lg p-4 bg-slate-50 hover:shadow-lg transition transform duration-600 ease-in-out hover:scale-105">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" alt="React" class="h-16 mb-2 p-2" />
+        <span class="text-sm text-black"><b>React</b></span>
+      </div>
+      <div class="flex flex-col items-center border rounded-lg p-4 bg-slate-50 hover:shadow-lg transition transform duration-600 ease-in-out hover:scale-105">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-plain.svg" alt="Node.js" class="h-16 mb-2 p-2" />
+        <span class="text-sm text-black"><b>Node.js</b></span>
+      </div>
+      <div class="flex flex-col items-center border rounded-lg p-4 bg-slate-50 hover:shadow-lg transition transform duration-600 ease-in-out hover:scale-105">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-plain-wordmark.svg" alt="MySQL" class="h-16 mb-2 p-2" />
+        <span class="text-sm text-black"><b>MySQL</b></span>
+      </div>
+      <div class="flex flex-col items-center border rounded-lg p-4 bg-slate-50 hover:shadow-lg transition transform duration-600 ease-in-out hover:scale-105">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-plain.svg" alt="Docker" class="h-16 mb-2 p-2" />
+        <span class="text-sm text-black"><b>Docker</b></span>
+      </div>
+      <div class="flex flex-col items-center border rounded-lg p-4 bg-slate-50 hover:shadow-lg transition transform duration-600 ease-in-out hover:scale-105">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind CSS" class="h-16 mb-2 p-2" />
+        <span class="text-sm text-black"><b>Tailwind CSS</b></span>
+      </div>
+      <div class="flex flex-col items-center border rounded-lg p-4 bg-slate-50 hover:shadow-lg transition transform duration-600 ease-in-out hover:scale-105">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-plain.svg" alt="Python" class="h-16 mb-2 p-2" />
+        <span class="text-sm text-black"><b>Python</b></span>
+      </div>
+      <div class="flex flex-col items-center border rounded-lg p-4 bg-slate-50 hover:shadow-lg transition transform duration-600 ease-in-out hover:scale-105">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-plain.svg" alt="Vue.js" class="h-16 mb-2 p-2" />
+        <span class="text-sm text-black"><b>Vue.js</b></span>
+      </div>
+      <div class="flex flex-col items-center border rounded-lg p-4 bg-slate-50 hover:shadow-lg transition transform duration-600 ease-in-out hover:scale-105">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-plain.svg" alt="Git" class="h-16 mb-2 p-2" />
+        <span class="text-sm text-black"><b>Git</b></span>
+      </div>
+      <div class="flex flex-col items-center border rounded-lg p-4 bg-slate-50 hover:shadow-lg transition transform duration-600 ease-in-out hover:scale-105">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" alt="GitHub" class="h-16 mb-2 p-2" />
+        <span class="text-sm text-black"><b>GitHub</b></span>
+      </div>
+      <div class="flex flex-col items-center border rounded-lg p-4 bg-slate-50 hover:shadow-lg transition transform duration-600 ease-in-out hover:scale-105">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-plain.svg" alt="Firebase" class="h-16 mb-2 p-2" />
+        <span class="text-sm text-black"><b>Firebase</b></span>
+      </div>
+      <div class="flex flex-col items-center border rounded-lg p-4 bg-slate-50 hover:shadow-lg transition transform duration-600 ease-in-out hover:scale-105">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-plain.svg" alt="MongoDB" class="h-16 mb-2 p-2" />
+        <span class="text-sm text-black"><b>MongoDB</b></span>
+      </div>
+      <div class="flex flex-col items-center border rounded-lg p-4 bg-slate-50 hover:shadow-lg transition transform duration-600 ease-in-out hover:scale-105">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/supabase/supabase-original.svg" alt="Supabase" class="h-16 mb-2 p-2" />
+        <span class="text-sm text-black"><b>Supabase</b></span>
+      </div>
+      <div class="flex flex-col items-center border rounded-lg p-4 bg-slate-50 hover:shadow-lg transition transform duration-600 ease-in-out hover:scale-105">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original-wordmark.svg" alt="Next.js" class="h-16 mb-2 p-2" />
+        <span class="text-sm text-black"><b>Next.js</b></span>
+      </div>
+      <div class="flex flex-col items-center border rounded-lg p-4 bg-slate-50 hover:shadow-lg transition transform duration-600 ease-in-out hover:scale-105">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cloudflare/cloudflare-original.svg" alt="Cloudflare" class="h-16 mb-2 p-2" />
+        <span class="text-sm text-black"><b>Cloudflare</b></span>
+      </div>
+      <div class="flex flex-col items-center border rounded-lg p-4 bg-slate-50 hover:shadow-lg transition transform duration-600 ease-in-out hover:scale-105">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-plain.svg" alt="Postman" class="h-16 mb-2 p-2" />
+        <span class="text-sm text-black"><b>Postman</b></span>
+      </div>
+      <div class="flex flex-col items-center border rounded-lg p-4 bg-slate-50 hover:shadow-lg transition transform duration-600 ease-in-out hover:scale-105">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vercel/vercel-original-wordmark.svg" alt="Vercel" class="h-16 mb-2 p-2" />
+        <span class="text-sm text-black"><b>Vercel</b></span>
+      </div>
     </div>
   </section>
 </MainLayout>

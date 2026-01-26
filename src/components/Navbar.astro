@@ -1,7 +1,25 @@
 ---
 ---
-<nav class="container py-6 flex items-center justify-between">
-<a href="/" class="font-semibold">isaactalb</a>
+<style>
+    .sticky-nav {
+        background-color: transparent;
+        transition: background-color 0.5s ease-in-out;
+    }
+
+    .sticky-nav a:hover{
+        color: rgb(7, 95, 226);
+        transition: color 0.5s ease-in-out;
+        text-decoration: underline;
+    }
+
+    .sticky-nav.scrolled {
+        background-color: rgb(255, 255, 255);
+        color: black;
+    }
+</style>
+
+<nav class="container border-b py-6 flex items-center justify-between sticky-nav">
+    <a href="/" class="font-semibold">isaactalb</a>
     <div class="space-x-4 text-sm">
         <a href="/about">about</a>
         <a href="/projects">projects</a>
@@ -9,3 +27,12 @@
         <a href="/contact">contact</a>
     </div>
 </nav>
+
+<script>
+    window.addEventListener('scroll', function() {
+        const nav = document.querySelector('.sticky-nav');
+        if (nav) {
+            nav.classList.toggle('scrolled', window.scrollY > 0);
+        }
+    });
+</script>
