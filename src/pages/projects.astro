@@ -4,7 +4,7 @@ import MainLayout from '../layouts/MainLayout.astro';
 import { getCollection } from 'astro:content';
 import { PROJECTS } from '../config';
 
-const projects = await getCollection('projects');
+const projects = (await getCollection('projects')).sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
 ---
 <MainLayout metadata={PROJECTS}>
 
