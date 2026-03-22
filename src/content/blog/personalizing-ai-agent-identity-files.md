@@ -1,54 +1,77 @@
 ---
 title: "Personalizing Your AI Agent: SOUL.md, USER.md, IDENTITY.md"
 layout: ../../layouts/MainLayout.astro
-description: "How to personalize AI agent behavior with dedicated identity and user-context files in OpenClaw projects."
+description: "A practical guide to personalizing AI agents with SOUL.md, USER.md, and IDENTITY.md so OpenClaw workflows stay consistent, useful, and aligned to user preferences."
 date: "2026-03-15"
 link: "https://www.markdownguide.org/basic-syntax/"
 author: "Isaac Talb"
-tags: ["openclaw", "ai-agent", "identity", "context", "markdown"]
+tags: ["ai agent identity", "openclaw", "soul.md", "user.md", "identity.md", "context engineering"]
 SEO: true
-SEOTitle: "Personalizing Your AI Agent with SOUL.md, USER.md, and IDENTITY.md"
-SEODescription: "Learn a clean file-based pattern for customizing AI agent personality, user preferences, and role identity in OpenClaw."
+SEOTitle: "Personalize Your AI Agent with SOUL.md, USER.md, and IDENTITY.md"
+SEODescription: "Use SOUL.md, USER.md, and IDENTITY.md to define AI agent personality, user preferences, and role boundaries in OpenClaw workflows."
 SEOImage: "https://upload.wikimedia.org/wikipedia/commons/4/48/Markdown-mark.svg"
 draft: false
 ---
 
-One of the most effective ways to shape agent behavior is to separate context into purpose-specific files.
+One of the most effective ways to improve AI behavior is to organize context into a few clear files instead of mixing everything together. In OpenClaw-style workflows, files like **SOUL.md**, **USER.md**, and **IDENTITY.md** can help create a more consistent and personalized AI agent.
 
 ## SOUL.md
 
-Use this for **core personality and values**:
+Use `SOUL.md` for the agent's deeper behavioral qualities:
 
 - Tone and communication style
+- Values and principles
 - Ethical boundaries
-- Long-term behavior principles
+- Long-term behavioral preferences
 
-Think of it as your agent’s character anchor.
+Think of this file as the personality anchor for your AI system.
 
 ## USER.md
 
-Use this for **user preferences**:
+Use `USER.md` for the preferences of the person the agent is serving.
 
-- Writing style (short vs detailed)
-- Preferred tools and workflows
-- Domain-specific defaults
+Examples include:
 
-This file keeps output aligned to your personal way of working.
+- Preferred response length
+- Writing style preferences
+- Tool or workflow preferences
+- Repeated domain-specific defaults
+
+This helps the assistant adapt output to the way you actually like to work.
 
 ## IDENTITY.md
 
-Use this for **role and mission definition**:
+Use `IDENTITY.md` to define the role and mission of the assistant.
 
-- What the agent is responsible for
-- What it is not responsible for
-- How success is measured
+Include things like:
 
-This helps avoid role drift during complex tasks.
+- Primary responsibilities
+- Explicit non-responsibilities
+- Goals and success criteria
+- Scope boundaries
 
-## Recommended pattern
+This reduces role drift during longer or more complex tasks.
+
+## Recommended Structure
+
+A clean setup usually follows these principles:
 
 1. Keep each file short and intentional.
-2. Avoid duplicate rules across files.
-3. Review monthly as your workflow evolves.
+2. Avoid repeating the same rule in multiple files.
+3. Review the files regularly as your workflow evolves.
+4. Separate personality, user preference, and mission as distinct concepts.
 
-Clear context structure leads to more consistent responses and better long-term reliability.
+## Why This File-Based Approach Works
+
+This structure improves:
+
+- Consistency of responses
+- Reuse across projects
+- Easier updates over time
+- Better control over AI agent behavior
+
+Instead of trying to rewrite the same prompt over and over, you maintain context in a way that is modular and easier to reason about.
+
+## Final Thoughts
+
+If you want a more personalized AI workflow, file-based context is a strong pattern. Defining personality in `SOUL.md`, user preferences in `USER.md`, and scope in `IDENTITY.md` gives your agent clearer instructions and makes long-term behavior more stable.
