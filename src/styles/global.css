@@ -1,8 +1,8 @@
+@import './prose.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import './prose.css';
 
 html, body {
     @apply bg-gradient-to-br from-[#0c0c0c8e] via-[#030303ea] to-[#201c1c] text-gray-100 antialiased;
