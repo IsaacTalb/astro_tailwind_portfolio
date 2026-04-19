@@ -1,0 +1,253 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import { SAMPLE_BOOKS, SAMPLE_COURSES, formatMMK, generateOrderId } from '../../lib/mmpay';
+
+const type = Astro.url.searchParams.get('type') || 'donation';
+const id = Astro.url.searchParams.get('id');
+const amountParam = Astro.url.searchParams.get('amount');
+const custom = Astro.url.searchParams.get('custom') === 'true';
+
+// Get product details
+let product: any = null;
+let amount = 0;
+
+if (type === 'book') {
+  product = SAMPLE_BOOKS.find(b => b.id === id);
+  amount = product?.price || 0;
+} else if (type === 'course') {
+  product = SAMPLE_COURSES.find(c => c.id === id);
+  amount = product?.price || 0;
+} else if (type === 'donation') {
+  amount = custom ? 0 : parseInt(amountParam || '5000');
+}
+
+const orderId = generateOrderId(type as any);
+---
+
+<MainLayout 
+  metadata={{
+    TITLE: "Checkout | Isaac Talb",
+    DESCRIPTION: "Complete your purchase securely with MyanMyanPay"
+  }}
+>
+  <div class="max-w-xl mx-auto px-6 py-12">
+    
+    <!-- Header -->
+    <header class="text-center mb-8">
+      <h1 class="text-3xl font-bold text-white mb-2">Checkout</h1>
+      <p class="text-gray-400">Complete your purchase securely</p>
+    </header>
+    
+    <!-- Order Summary -->
+    <div class="bg-gray-800 rounded-xl p-6 mb-6">
+      <h2 class="text-lg font-semibold text-white mb-4">Order Summary</h2>
+      
+      {product ? (
+        <div class="flex gap-4 mb-4">
+          <div class="flex-1">
+            <h3 class="font-semibold text-white">{product.title}</h3>
+            <p class="text-sm text-gray-400">{product.description}</p>
+          </div>
+          <div class="text-right">
+            <div class="font-bold text-white">{formatMMK(product.price)}</div>
+          </div>
+        </div>
+      ) : type === 'donation' ? (
+        <div class="mb-4">
+          <h3 class="font-semibold text-white mb-2">Support My Work</h3>
+          {custom ? (
+            <div class="mt-4">
+              <label class="block text-sm text-gray-400 mb-2">Enter amount (MMK)</label>
+              <input 
+                type="number" 
+                name="customAmount"
+                id="customAmount"
+                placeholder="Enter amount"
+                min="1000"
+                step="1000"
+                class="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500"
+              />
+            </div>
+          ) : (
+            <p class="text-gray-400">Donation of {formatMMK(amount)}</p>
+          )}
+        </div>
+      ) : (
+        <p class="text-red-400">Product not found</p>
+      )}
+      
+      <hr class="border-gray-700 my-4" />
+      
+      <div class="flex justify-between items-center">
+        <span class="text-gray-400">Total</span>
+        <span class="text-2xl font-bold text-white" id="totalAmount">{formatMMK(amount)}</span>
+      </div>
+    </div>
+    
+    <!-- Customer Info Form -->
+    <form id="checkoutForm" class="bg-gray-800 rounded-xl p-6 mb-6">
+      <h2 class="text-lg font-semibold text-white mb-4">Your Information</h2>
+      
+      <div class="space-y-4">
+        <div>
+          <label class="block text-sm text-gray-400 mb-2">Full Name *</label>
+          <input 
+            type="text" 
+            name="customerName"
+            required
+            class="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500"
+            placeholder="Your full name"
+          />
+        </div>
+        
+        <div>
+          <label class="block text-sm text-gray-400 mb-2">Email *</label>
+          <input 
+            type="email" 
+            name="customerEmail"
+            required
+            class="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500"
+            placeholder="your@email.com"
+          />
+        </div>
+        
+        <div>
+          <label class="block text-sm text-gray-400 mb-2">Phone (optional)</label>
+          <input 
+            type="tel" 
+            name="customerPhone"
+            class="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500"
+            placeholder="+95 9xx xxx xxxx"
+          />
+        </div>
+      </div>
+      
+      <input type="hidden" name="orderId" value={orderId} />
+      <input type="hidden" name="type" value={type} />
+      <input type="hidden" name="productId" value={id || ''} />
+      <input type="hidden" name="amount" value={amount} id="amountInput" />
+    </form>
+    
+    
+    <!-- Payment Button -->
+    <button 
+      id="payButton"
+      type="button"
+      class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 rounded-lg transition-colors flex items-center justify-center gap-2"
+    >
+      <span>Pay with MyanMyanPay</span>
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+      </svg>
+    </button>
+    
+    
+    <!-- Payment Status -->
+    <div id="paymentStatus" class="mt-6 hidden"></div>
+    
+    
+    <!-- Security Note -->
+    <div class="mt-6 text-center">
+      <p class="text-sm text-gray-500 flex items-center justify-center gap-2">
+        <span>🔒</span>
+        <span>Secured by MyanMyanPay</span>
+      </p>
+    </div>
+    
+  </div>
+</MainLayout>
+
+<script>
+  // Handle custom amount for donations
+  const customAmountInput = document.getElementById('customAmount');
+  const totalAmount = document.getElementById('totalAmount');
+  const amountInput = document.getElementById('amountInput');
+  
+  if (customAmountInput) {
+    customAmountInput.addEventListener('input', (e) => {
+      const value = parseInt(e.target.value) || 0;
+      const formatted = new Intl.NumberFormat('my-MM', {
+        style: 'currency',
+        currency: 'MMK',
+        minimumFractionDigits: 0
+      }).format(value);
+      totalAmount.textContent = formatted;
+      amountInput.value = value;
+    });
+  }
+  
+  // Handle payment
+  document.getElementById('payButton').addEventListener('click', async () => {
+    const form = document.getElementById('checkoutForm');
+    const statusDiv = document.getElementById('paymentStatus');
+    
+    // Validate form
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+    
+    // Show loading
+    const button = document.getElementById('payButton');
+    button.disabled = true;
+    button.innerHTML = `
+      <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+      </svg>
+      <span>Processing...</span>
+    `;
+    
+    try {
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData);
+      
+      const response = await fetch('/api/create-payment', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      
+      const result = await response.json();
+      
+      if (result.success) {
+        statusDiv.innerHTML = `
+          <div class="bg-green-900/50 border border-green-600 rounded-lg p-6">
+            <h3 class="text-green-400 font-semibold mb-2">Payment Initiated!</h3>
+            <p class="text-gray-300 mb-4">Order ID: ${result.orderId}</p>
+            ${result.qrCode ? `
+              <div class="text-center mb-4">
+                <img src="${result.qrCode}" alt="Payment QR Code" class="mx-auto max-w-xs" />
+                <p class="text-sm text-gray-400 mt-2">Scan with MyanMyanPay app</p>
+              </div>
+            ` : ''}
+            ${result.paymentUrl ? `
+              <a href="${result.paymentUrl}" target="_blank" 
+                class="inline-block bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg">
+                Open Payment Page
+              </a>
+            ` : ''}
+          </div>
+        `;
+        statusDiv.classList.remove('hidden');
+      } else {
+        throw new Error(result.message || 'Payment failed');
+      }
+    } catch (error) {
+      statusDiv.innerHTML = `
+        <div class="bg-red-900/50 border border-red-600 rounded-lg p-4">
+          <p class="text-red-400">${error.message || 'Something went wrong. Please try again.'}</p>
+        </div>
+      `;
+      statusDiv.classList.remove('hidden');
+      
+      button.disabled = false;
+      button.innerHTML = `
+        <span>Pay with MyanMyanPay</span>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+        </svg>
+      `;
+    }
+  });
+</script>
