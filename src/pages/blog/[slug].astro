@@ -9,19 +9,51 @@ if (!slug) {
   throw new Error('Slug parameter is missing.');
 }
 
-const post = await getEntry('blog', slug); // Fetch the blog post by slug
+const post = await getEntry('blog', slug);
 if (!post) {
   throw new Error(`Blog post with slug "${slug}" not found.`);
 }
 
-const { Content } = await post.render(); // Render the Markdown content
-const metadata = getMetadata('blog', post.data); // Generate metadata using the frontmatter
+const { Content } = await post.render();
+const metadata = getMetadata('blog', post.data);
+
+// Format date
+const formatDate = (dateString: string) => {
+  const date = new Date(dateString);
+  return date.toLocaleDateString('en-US', { 
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric' 
+  });
+};
 ---
 
 <MainLayout metadata={metadata} image={metadata.IMAGE}>
-  <article class="py-12 prose max-w-3xl">
-    <h1 class="text-3xl text-white font-bold mb-4">{metadata.TITLE}</h1>
-    <p class="text-sm text-gray-500 mb-6">{metadata.DESCRIPTION}</p>
-    <Content /> <!-- Render the Markdown content -->
+  <article class="py-12 max-w-3xl mx-auto">
+    <!-- Header -->
+    <header class="mb-8 border-b border-gray-700 pb-6">
+      <h1 class="text-4xl font-bold text-white mb-4 leading-tight">{metadata.TITLE}</h1>
+      <p class="text-lg text-gray-400 mb-4">{metadata.DESCRIPTION}</p>
+      <div class="flex flex-wrap items-center gap-4 text-sm text-gray-500">
+        <time datetime={metadata.DATE}>{formatDate(metadata.DATE)}</time>
+        <span>•</span>
+        <span>{metadata.AUTHOR}</span>
+        {metadata.TAGS && (
+          <>
+            <span>•</span>
+            <div class="flex flex-wrap gap-2">
+              {metadata.TAGS.map((tag: string) => (
+                <span class="bg-gray-800 px-2 py-1 rounded text-xs">{tag}</span>
+              ))}
+            </div>
+          </>
+        )}
+      </div>
+    </header>
+    
+    <!-- Content with prose styles -->
+    <div class="prose">
+      <Content />
+    </div>
   </article>
 </MainLayout>

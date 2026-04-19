@@ -7,28 +7,50 @@ const { slug } = Astro.params;
 if (!slug) {
   throw new Error('Slug parameter is missing.');
 }
-const project = await getEntry('projects', slug); // Fetch the project by slug
+const project = await getEntry('projects', slug);
 if (!project) {
   throw new Error(`Project with slug "${slug}" not found.`);
 }
 
-const { Content } = await project.render(); // Render the Markdown content
+const { Content } = await project.render();
 const metadata = getMetadata('projects', project.data);
+
+const formatDate = (dateString: string) => {
+  const date = new Date(dateString);
+  return date.toLocaleDateString('en-US', { 
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric' 
+  });
+};
 ---
 
 <MainLayout metadata={metadata} image={metadata.IMAGE}>
-  <article class="py-12 prose max-w-3xl">
-    <h1 class="text-3xl text-white font-bold mb-4">{metadata.TITLE || slug}</h1>
-    <p class="text-sm text-gray-500 mb-6">{metadata.DESCRIPTION}</p>
-    <span class="text-sm text-gray-500">{metadata.DATE}</span>
-    &nbsp; | &nbsp;
-    <a href="/about" class="hover:text-blue-600 hover:underline">
-      <span class="text-sm text-gray-500 font-semibold">{metadata.AUTHOR}</span>
-      <span class="hidden group-hover:block text-large text-gray-500 bg-white border rounded p-1">
-        IsaacTalb, Software Developer
-      </span>
-    </a>
-    &nbsp; <span>[ {metadata.TAGS && metadata.TAGS.map(tag => tag).join(', ')} ]</span>
-    <Content />
+  <article class="py-12 max-w-3xl mx-auto">
+    <!-- Header -->
+    <header class="mb-8 border-b border-gray-700 pb-6">
+      <h1 class="text-4xl font-bold text-white mb-4 leading-tight">{metadata.TITLE || slug}</h1>
+      <p class="text-lg text-gray-400 mb-4">{metadata.DESCRIPTION}</p>
+      <div class="flex flex-wrap items-center gap-4 text-sm text-gray-500">
+        <time datetime={metadata.DATE}>{formatDate(metadata.DATE)}</time>
+        <span>•</span>
+        <a href="/about" class="text-blue-400 hover:text-blue-300 hover:underline">{metadata.AUTHOR}</a>
+        {metadata.TAGS && (
+          <>
+            <span>•</span>
+            <div class="flex flex-wrap gap-2">
+              {metadata.TAGS.map((tag: string) => (
+                <span class="bg-gray-800 px-2 py-1 rounded text-xs">{tag}</span>
+              ))}
+            </div>
+          </>
+        )}
+      </div>
+    </header>
+    
+    <!-- Content with prose styles -->
+    <div class="prose">
+      <Content />
+    </div>
   </article>
 </MainLayout>

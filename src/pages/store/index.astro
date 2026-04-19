@@ -1,0 +1,118 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import StoreCard from '../components/StoreCard.astro';
+import { SAMPLE_BOOKS, SAMPLE_COURSES, DONATION_TIERS } from '../lib/mmpay';
+---
+
+<MainLayout 
+  metadata={{
+    TITLE: "Store | Isaac Talb",
+    DESCRIPTION: "Buy books, courses, and support my work with MyanMyanPay"
+  }}
+>
+  <div class="max-w-6xl mx-auto px-6 py-12">
+    
+    <!-- Header -->
+    <header class="text-center mb-12">
+      <h1 class="text-4xl font-bold text-white mb-4">Store</h1>
+      <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+        Books, courses, and ways to support my work. All payments processed securely with MyanMyanPay.
+      </p>
+    </header>
+    
+    <!-- Books Section -->
+    <section class="mb-16">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="text-2xl font-bold text-white flex items-center gap-2">
+          📚 Books
+        </h2>
+        <a href="/store/books" class="text-blue-400 hover:text-blue-300 text-sm">
+          View All →
+        </a>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        {SAMPLE_BOOKS.map((book) => (
+          <StoreCard product={book} type="book" />
+        ))}
+      </div>
+    </section>
+    
+    <!-- Courses Section -->
+    <section class="mb-16">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="text-2xl font-bold text-white flex items-center gap-2">
+          🎓 Courses
+        </h2>
+        <a href="/store/courses" class="text-blue-400 hover:text-blue-300 text-sm">
+          View All →
+        </a>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        {SAMPLE_COURSES.map((course) => (
+          <StoreCard product={course} type="course" />
+        ))}
+      </div>
+    </section>
+    
+    <!-- Donation Section -->
+    <section class="mb-12">
+      <div class="text-center mb-8">
+        <h2 class="text-2xl font-bold text-white mb-2 flex items-center justify-center gap-2">
+          💝 Support My Work
+        </h2>
+        <p class="text-gray-400">
+          If you find my content helpful, consider supporting me with a donation.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+        {DONATION_TIERS.map((tier) => (
+          <a 
+            href={`/store/checkout?type=donation&amount=${tier.amount}`}
+            class="bg-gray-800 hover:bg-gray-700 rounded-xl p-6 text-center transition-colors group"
+          >
+            <div class="text-3xl mb-2">{tier.label.split(' ')[0]}</div>
+            <div class="text-lg font-bold text-white mb-1">
+              {new Intl.NumberFormat('my-MM', {
+                style: 'currency',
+                currency: 'MMK',
+                minimumFractionDigits: 0
+              }).format(tier.amount)}
+            </div>
+            <div class="text-sm text-gray-400">{tier.description}</div>
+          </a>
+        ))}
+      </div>
+      
+      <!-- Custom Donation -->
+      <div class="mt-6 text-center">
+        <a 
+          href="/store/checkout?type=donation&custom=true"
+          class="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300"
+        >
+          <span>Or enter a custom amount</span>
+          <span>→</span>
+        </a>
+      </div>
+    </section>
+    
+    <!-- Trust Badges -->
+    <div class="border-t border-gray-700 pt-8">
+      <div class="flex flex-wrap items-center justify-center gap-8 text-gray-500 text-sm">
+        <div class="flex items-center gap-2">
+          <span>🔒</span>
+          <span>Secure Payment with MyanMyanPay</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span>✉️</span>
+          <span>Instant Email Delivery</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span>💯</span>
+          <span>Satisfaction Guaranteed</span>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</MainLayout>
