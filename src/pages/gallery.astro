@@ -1,0 +1,65 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import ThemeToggle from '../components/ThemeToggle.astro';
+
+const metadata = {
+  TITLE: 'Gallery',
+  DESCRIPTION: 'Photo memos — sample images and captions you can replace later.'
+};
+
+const memos = [
+  {src: '/assets/gallery/img1.svg', alt: 'Memo 1', caption: 'Memo: Night shoot — city lights and long exposure.'},
+  {src: '/assets/gallery/img2.svg', alt: 'Memo 2', caption: 'Memo: Concept art — abstract tech composition.'},
+  {src: '/assets/gallery/img3.svg', alt: 'Memo 3', caption: 'Memo: Motion study — speed and blur experiment.'},
+  {src: '/assets/gallery/img4.svg', alt: 'Memo 4', caption: 'Memo: Portrait — moody lighting and contrast.'},
+  {src: '/assets/gallery/img5.svg', alt: 'Memo 5', caption: 'Memo: Architecture — lines, symmetry, texture.'},
+  {src: '/assets/gallery/img6.svg', alt: 'Memo 6', caption: 'Memo: Nature study — color palettes and shapes.'},
+];
+---
+
+<MainLayout metadata={metadata}>
+  <section class="py-12">
+    <div class="container mx-auto flex items-center justify-between mb-8">
+      <div>
+        <h1 class="text-4xl font-bold" style="font-family: 'Orbitron', sans-serif;">Gallery — Photo Memos</h1>
+        <p class="mt-2 text-gray-400">A small collection of memos. Click an image to open the lightbox. Use the theme toggle to switch modes.</p>
+      </div>
+      <div>
+        <ThemeToggle />
+      </div>
+    </div>
+
+    <div class="container mx-auto">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {memos.map((m) => (
+          <button
+            class="group relative overflow-hidden rounded-2xl shadow-lg transform transition duration-300 hover:-translate-y-1 focus:outline-none"
+            data-lightbox={m.src}
+            data-caption={m.caption}
+            aria-label={`Open ${m.alt} in lightbox`}
+          >
+            <img src={m.src} alt={m.alt} class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300" />
+
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+              <div class="p-4 text-white">
+                <p class="font-semibold">{m.alt}</p>
+                <p class="text-sm text-gray-200">{m.caption}</p>
+              </div>
+            </div>
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="fixed inset-0 bg-black/80 hidden items-center justify-center p-6 z-50" role="dialog" aria-modal="true">
+      <button id="lightbox-close" class="absolute top-6 right-6 text-white text-2xl">×</button>
+      <div class="max-w-4xl w-full">
+        <img id="lightbox-img" src="" alt="" class="w-full h-auto rounded-lg shadow-2xl" />
+        <p id="lightbox-caption" class="mt-4 text-center text-gray-200"></p>
+      </div>
+    </div>
+
+    <script type="module" src="/src/scripts/lightbox.js"></script>
+  </section>
+</MainLayout>

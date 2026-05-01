@@ -20,12 +20,29 @@
 
 <nav class="container border-b py-6 flex items-center justify-between sticky-nav">
     <a href="/" class="font-semibold">isaactalb</a>
-    <div class="space-x-4 text-sm">
+    <div class="space-x-4 text-sm flex items-center">
         <a href="/about">about</a>
         <a href="/projects">projects</a>
         <a href="/blog">blogs</a>
         <a href="/store">store</a>
         <a href="/contact">contact</a>
+        <div class="ml-4">
+          <script type="module" async>
+            // Lazy-load ThemeToggle component to avoid SSR mismatch
+            (async function(){
+              const resp = await fetch('/_astro/theme-toggle.html').catch(()=>null);
+              if(!resp || !resp.ok) return;
+              const html = await resp.text();
+              const wrapper = document.createElement('span');
+              wrapper.innerHTML = html;
+              document.currentScript.parentNode.appendChild(wrapper);
+            })();
+          </script>
+          <noscript>
+            <!-- Fallback theme button -->
+            <a href="#" class="px-2 py-1 rounded bg-gray-200 text-sm">Theme</a>
+          </noscript>
+        </div>
     </div>
 </nav>
 
