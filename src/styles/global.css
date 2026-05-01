@@ -4,12 +4,22 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body {
-    @apply bg-gradient-to-br from-[#0c0c0c8e] via-[#030303ea] to-[#201c1c] text-gray-100 antialiased;
-}
+@layer base {
+  html, body {
+    @apply antialiased;
+    font-family: 'Orbitron', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  }
 
-body {
+  body {
+    @apply bg-gradient-to-br from-[#0c0c0c8e] via-[#030303ea] to-[#201c1c] text-gray-100;
     transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  /* Dark mode styles when the "dark" class is present on <html> */
+  .dark body {
+    @apply text-gray-100;
+    background: linear-gradient(to bottom right, #030712, #0b1220);
+  }
 }
 
 /* Simple container */
