@@ -59,85 +59,51 @@ const selectedBlogPosts = blog.slice(0, 3); // Get the first 3 blog posts
       ))}
     </div>
   </section>
-  <section>
-    <h2 class="text-2xl font-semibold">Technologies I Work With</h2>
-    <div class="mt-6 grid grid-cols-2 md:grid-cols-4 gap-6 bg-white-100 p-6 rounded-lg">
-      <div class="flex flex-col items-center border rounded-lg p-4 bg-slate-50 hover:shadow-lg transition transform duration-600 ease-in-out hover:scale-105">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-plain.svg" class="h-16 mb-2 p-2" />
-        <span class="text-sm text-black"><b>PHP</b></span>
-      </div>
-      <div class="flex flex-col items-center border rounded-lg p-4 bg-slate-50 hover:shadow-lg transition transform duration-600 ease-in-out hover:scale-105">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt="JavaScript" class="h-16 mb-2 p-2" />
-        <span class="text-sm text-black"><b>JavaScript</b></span>
-      </div>
-      <div class="flex flex-col items-center border rounded-lg p-4 bg-slate-50 hover:shadow-lg transition transform duration-600 ease-in-out hover:scale-105">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original.svg" alt="Laravel" class="h-16 mb-2 p-2" />
-        <span class="text-sm text-black"><b>Laravel</b></span>
-      </div>
-      <div class="flex flex-col items-center border rounded-lg p-4 bg-slate-50 hover:shadow-lg transition transform duration-600 ease-in-out hover:scale-105">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" alt="React" class="h-16 mb-2 p-2" />
-        <span class="text-sm text-black"><b>React</b></span>
-      </div>
-      <div class="flex flex-col items-center border rounded-lg p-4 bg-slate-50 hover:shadow-lg transition transform duration-600 ease-in-out hover:scale-105">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-plain.svg" alt="Node.js" class="h-16 mb-2 p-2" />
-        <span class="text-sm text-black"><b>Node.js</b></span>
-      </div>
-      <div class="flex flex-col items-center border rounded-lg p-4 bg-slate-50 hover:shadow-lg transition transform duration-600 ease-in-out hover:scale-105">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-plain-wordmark.svg" alt="MySQL" class="h-16 mb-2 p-2" />
-        <span class="text-sm text-black"><b>MySQL</b></span>
-      </div>
-      <div class="flex flex-col items-center border rounded-lg p-4 bg-slate-50 hover:shadow-lg transition transform duration-600 ease-in-out hover:scale-105">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-plain.svg" alt="Docker" class="h-16 mb-2 p-2" />
-        <span class="text-sm text-black"><b>Docker</b></span>
-      </div>
-      <div class="flex flex-col items-center border rounded-lg p-4 bg-slate-50 hover:shadow-lg transition transform duration-600 ease-in-out hover:scale-105">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind CSS" class="h-16 mb-2 p-2" />
-        <span class="text-sm text-black"><b>Tailwind CSS</b></span>
-      </div>
-      <div class="flex flex-col items-center border rounded-lg p-4 bg-slate-50 hover:shadow-lg transition transform duration-600 ease-in-out hover:scale-105">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-plain.svg" alt="Python" class="h-16 mb-2 p-2" />
-        <span class="text-sm text-black"><b>Python</b></span>
-      </div>
-      <div class="flex flex-col items-center border rounded-lg p-4 bg-slate-50 hover:shadow-lg transition transform duration-600 ease-in-out hover:scale-105">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-plain.svg" alt="Vue.js" class="h-16 mb-2 p-2" />
-        <span class="text-sm text-black"><b>Vue.js</b></span>
-      </div>
-      <div class="flex flex-col items-center border rounded-lg p-4 bg-slate-50 hover:shadow-lg transition transform duration-600 ease-in-out hover:scale-105">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-plain.svg" alt="Git" class="h-16 mb-2 p-2" />
-        <span class="text-sm text-black"><b>Git</b></span>
-      </div>
-      <div class="flex flex-col items-center border rounded-lg p-4 bg-slate-50 hover:shadow-lg transition transform duration-600 ease-in-out hover:scale-105">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" alt="GitHub" class="h-16 mb-2 p-2" />
-        <span class="text-sm text-black"><b>GitHub</b></span>
-      </div>
-      <div class="flex flex-col items-center border rounded-lg p-4 bg-slate-50 hover:shadow-lg transition transform duration-600 ease-in-out hover:scale-105">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-plain.svg" alt="Firebase" class="h-16 mb-2 p-2" />
-        <span class="text-sm text-black"><b>Firebase</b></span>
-      </div>
-      <div class="flex flex-col items-center border rounded-lg p-4 bg-slate-50 hover:shadow-lg transition transform duration-600 ease-in-out hover:scale-105">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-plain.svg" alt="MongoDB" class="h-16 mb-2 p-2" />
-        <span class="text-sm text-black"><b>MongoDB</b></span>
-      </div>
-      <div class="flex flex-col items-center border rounded-lg p-4 bg-slate-50 hover:shadow-lg transition transform duration-600 ease-in-out hover:scale-105">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/supabase/supabase-original.svg" alt="Supabase" class="h-16 mb-2 p-2" />
-        <span class="text-sm text-black"><b>Supabase</b></span>
-      </div>
-      <div class="flex flex-col items-center border rounded-lg p-4 bg-slate-50 hover:shadow-lg transition transform duration-600 ease-in-out hover:scale-105">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original-wordmark.svg" alt="Next.js" class="h-16 mb-2 p-2" />
-        <span class="text-sm text-black"><b>Next.js</b></span>
-      </div>
-      <div class="flex flex-col items-center border rounded-lg p-4 bg-slate-50 hover:shadow-lg transition transform duration-600 ease-in-out hover:scale-105">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cloudflare/cloudflare-original.svg" alt="Cloudflare" class="h-16 mb-2 p-2" />
-        <span class="text-sm text-black"><b>Cloudflare</b></span>
-      </div>
-      <div class="flex flex-col items-center border rounded-lg p-4 bg-slate-50 hover:shadow-lg transition transform duration-600 ease-in-out hover:scale-105">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-plain.svg" alt="Postman" class="h-16 mb-2 p-2" />
-        <span class="text-sm text-black"><b>Postman</b></span>
-      </div>
-      <div class="flex flex-col items-center border rounded-lg p-4 bg-slate-50 hover:shadow-lg transition transform duration-600 ease-in-out hover:scale-105">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vercel/vercel-original-wordmark.svg" alt="Vercel" class="h-16 mb-2 p-2" />
-        <span class="text-sm text-black"><b>Vercel</b></span>
-      </div>
+  <section class="py-12">
+    <h2 class="text-2xl font-semibold">Technology Profile Showcase</h2>
+    <div class="mt-6 space-y-8">
+      <article class="border p-6 rounded card">
+        <h3 class="text-xl font-semibold">Full-Stack Development</h3>
+        <p class="mt-3 text-gray-300">You worked extensively with Laravel, Flutter, Next.js, React, Tailwind CSS, MySQL, Supabase, and Firebase.</p>
+        <h4 class="mt-4 font-semibold">What you built</h4>
+        <ul class="mt-2 list-disc list-inside text-gray-300 space-y-1">
+          <li>QR code generator platform with admin CMS</li>
+          <li>AI-powered tech news platform</li>
+          <li>E-commerce systems and mobile applications</li>
+          <li>Business automation tools and learning platforms</li>
+          <li>Real-time dashboards and customer inquiry tracking systems</li>
+        </ul>
+        <p class="mt-4 text-gray-300">You consistently focused on real-world usability, deployment readiness, scalable architecture, automation, and security practices.</p>
+      </article>
+
+      <article class="border p-6 rounded card">
+        <h3 class="text-xl font-semibold">Mobile App Development</h3>
+        <p class="mt-3 text-gray-300">You created and planned several mobile applications using Flutter.</p>
+        <h4 class="mt-4 font-semibold">Projects included</h4>
+        <ul class="mt-2 list-disc list-inside text-gray-300 space-y-1">
+          <li>Couple memo/social app</li>
+          <li>Medical herb information app</li>
+          <li>News applications</li>
+          <li>Firebase-authenticated applications</li>
+        </ul>
+      </article>
+
+      <article class="border p-6 rounded card">
+        <h3 class="text-xl font-semibold">Cloud, DevOps & Infrastructure</h3>
+        <p class="mt-3 text-gray-300">You explored and deployed Docker, GitHub Actions, Vercel, Ubuntu, AlmaLinux, Namecheap, VPS infrastructure, and hosting systems.</p>
+      </article>
+
+      <article class="border p-6 rounded card">
+        <h3 class="text-xl font-semibold">AI, Automation & Product Thinking</h3>
+        <p class="mt-3 text-gray-300">You explored OpenAI APIs, Google APIs, NVIDIA APIs, Ollama, OpenClaw, local LLM deployment concepts, and automation systems using Google Apps Script, Sheets, and business integrations.</p>
+        <p class="mt-3 text-gray-300">Across projects, you focused on practical systems, deployment, scaling, security, and user-centered product execution for local and regional audiences.</p>
+      </article>
+
+      <article class="border p-6 rounded card">
+        <h3 class="text-xl font-semibold">Short Professional Summary</h3>
+        <p class="mt-3 text-gray-300">Full-stack developer and technology builder experienced in Laravel, Flutter, Next.js, cloud infrastructure, AI integrations, automation systems, and VPS deployment. Built real-world platforms including automation dashboards, educational systems, AI-powered tools, e-commerce platforms, and mobile applications.</p>
+      </article>
     </div>
   </section>
+
 </MainLayout>
