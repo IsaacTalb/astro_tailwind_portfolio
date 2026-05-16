@@ -4,12 +4,29 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    font-family: 'Sreda';
+    src: url('../assets/Sreda.otf') format('opentype');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Caveat';
+    src: url('../assets/Caveat-VariableFont_wght.ttf') format('truetype');
+    font-display: swap;
+}
+
 html, body {
     @apply bg-gradient-to-br from-[#0c0c0c8e] via-[#030303ea] to-[#201c1c] text-gray-100 antialiased;
 }
 
 body {
+    font-family: 'Caveat', cursive;
     transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1, h2, h3, h4, h5, h6, nav a, .font-display {
+    font-family: 'Sreda', serif;
 }
 
 /* Simple container */
